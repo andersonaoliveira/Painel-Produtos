@@ -1,0 +1,28 @@
+<div class="container alertas">
+  <div class="row">
+    <% if flash[:notice] %>
+      <div id="message" class="ls-alert-info ls-dismissable" role="alert">
+        <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
+    <% if flash[:alert] %>
+      <div id="message" class="ls-alert-warning ls-dismissable" role="alert">
+        <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
+    <% if flash[:success] %>
+      <div id="message" class="ls-alert-success ls-dismissable" role="alert">
+        <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+        <%= flash[:success] %>
+      </div>
+    <% end %>
+    <% if flash[:danger] %>
+      <div id="message" class="ls-alert-danger ls-dismissable" role="alert">
+        <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+        <%= flash[:danger] %>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<%= render 'layouts/errors', object: @user %>
+
+<div class="container-fluid">
+  <h1 class="text-center">Usuários</h1>
+
+  <% if @users.empty? %>
+    <h2>Nenhum grupo de produtos cadastrado</h2>
+  <% else %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Detalhes</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user| %>
+        <tr id="user-<%= user.id %>">
+          <th><%= user.id %></th>
+          <td><%= user.email %></td>
+          <td><%= link_to('Detalhes', user) %></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

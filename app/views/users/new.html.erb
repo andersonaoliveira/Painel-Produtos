@@ -1,0 +1,49 @@
+<%= render 'layouts/errors', object: @user %>
+
+<div class="ls-login-parent">
+  <div class="ls-login-inner">
+    <div class="ls-login-container">
+      <div class="ls-login-box">
+        <h1 class="ls-login-logo">
+          <img title="Logo Login" src="https://opensource.locaweb.com.br/locawebstyle/assets/images/locastyle/logo-locaweb.png">
+        </h1>
+        <div class="container alertas">
+          <div class="row">
+            <% if @user.errors.any?%>
+              <% @user.errors.full_messages.each do |msg| %>
+                <div id="message" class="ls-alert-info ls-dismissable">
+                  <%= msg %>
+                  <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+        <%= form_with(model: @user, url: create_user_path, class: "ls-form ls-login-form") do |f| %>
+          <fieldset>
+            <label class="ls-label">
+              <b class="ls-label-text ls-hidden-accessible">E-mail</b>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"ls-field-lg", placeholder: "Email" %>
+            </label>
+            <label class="ls-label">
+              <b class="ls-label-text ls-hidden-accessible">Senha</b>
+              <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+              <% end %>
+              <%= f.password_field :password, autocomplete: "new-password", class: "ls-field-lg", placeholder: "Senha" %>
+            </label>
+            <label class="ls-label">
+              <b class="ls-label-text ls-hidden-accessible">Confirme sua senha</b>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "ls-field-lg", placeholder: "Confirme sua senha" %>
+            </label>
+            <div class="field adjust">
+              <%= f.check_box :administrator %>
+              <%= f.label :administrator, 'Administrador' %>
+            </div>
+            <%= f.submit "Cadastrar", class: "ls-btn-primary ls-btn-block ls-btn-lg" %>
+          </fieldset>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

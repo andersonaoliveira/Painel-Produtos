@@ -1,0 +1,24 @@
+<%= render 'layouts/errors', object: period %>
+<div class="container-fluid">
+  <% if period.persisted? %>
+    <h1>Editar período</h1>
+  <% else %>
+    <h1>Cadastrar nova Periodicidade</h1>
+  <% end %>
+  <%= form_with(model: period, class: "ls-form row") do |form| %>
+    <fieldset>
+      <label class="ls-label col-md-6">
+        <%= form.label :name, class: "ls-label-text" %>
+        <%= form.text_field :name %>
+      </label>
+      <label class="ls-label col-md-6">
+        <%= form.label :months, class: "ls-label-text" %>
+        <%= form.text_field :months %>
+      </label>
+    </fieldset>
+    <div class="ls-actions-btn">
+      <%= link_to 'Voltar', periods_path, class: "ls-btn-primary-info" %>
+      <%= form.submit 'Salvar', class: "ls-btn-primary" %>
+    </div>
+  <% end %>
+</div>

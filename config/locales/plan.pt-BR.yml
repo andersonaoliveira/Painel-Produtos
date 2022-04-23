@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      plan: Plano
+    attributes:
+      plan:
+        name: "Nome"
+        description: "Descrição"
+        details: "Detalhes"
+        product_group: "Grupo de Produtos"

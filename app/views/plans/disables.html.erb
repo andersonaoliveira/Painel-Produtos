@@ -1,0 +1,36 @@
+<div class="container-fluid">
+  <h1 class="text-center my-20">Planos</h1>
+  <% if @plans.empty? %>
+    <h2 class="my-20"> Nenhum Plano desativado! </h2>
+  <% else %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Descrição</th>
+          <th scope="col">Detalhes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @plans.each do |pl| %>
+          <tr id="plan-<%= pl.id %>">
+            <th scope="row">
+              <%= pl.id %>
+            </th>
+            <td>
+              <%= pl.name %>
+            </td>
+            <td>
+              <%= pl.description %>
+            </td>
+            <td>
+              <%= link_to('Detalhes', pl) %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  <%= link_to 'Voltar', plans_path, class: "ls-btn-primary-info" %>
+</div>

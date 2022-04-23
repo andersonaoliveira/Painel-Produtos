@@ -1,0 +1,10 @@
+pt-BR:
+  activerecord:
+    models:
+      product_group: Grupo de Produto
+    attributes:
+      product_group:
+        name: Nome
+        description: Descrição
+        icon: Ícone
+        key: Chave

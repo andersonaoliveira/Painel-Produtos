@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="ls-theme-green">
+  <head>
+    <title>GestaoProdutos</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= stylesheet_link_tag "application", "//assets.locaweb.com.br/locastyle/3.8.2/stylesheets/locastyle.css" %>
+    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/edge/stylesheets/locastyle.css">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+  <body>
+    <%= render "layouts/shared/topbar" %>
+    <%= render "layouts/shared/sidebar" %>
+
+    <main class="ls-main fade">
+      <%= render 'layouts/alerts', object: nil %>
+      <%= yield %>
+    </main>
+
+    <%= render "layouts/shared/sidebar_notifications" %>
+    <!-- We recommended use jQuery 1.10 or up -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+    <script src="//assets.locaweb.com.br/locastyle/3.10.1/javascripts/locastyle.js"></script>
+    <script src="//assets.locaweb.com.br/locastyle/edge/javascripts/locastyle.js"></script>
+    <script>
+      $('.dinheiro').mask('###.##0,00', {reverse: true});
+    </script>
+  </body>
+</html>

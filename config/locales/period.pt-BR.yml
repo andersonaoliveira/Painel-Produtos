@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    models:
+      period: Período
+    attributes:
+      period:
+        name: 'Nome'
+        months: 'Meses'

@@ -1,0 +1,32 @@
+<%= render 'layouts/errors', object: product_group %>
+<div class="container-fluid">
+  <% if product_group.persisted? %>
+    <h1>Editar Grupo de Produtos</h1>
+  <% else %>
+    <h1>Novo Grupo de Produtos</h1>
+  <% end %>
+  <%= form_with(model: product_group, class: "ls-form row") do |form| %>
+    <fieldset>
+      <label class="ls-label col-md-6">
+        <%= form.label :name, class: "ls-label-text" %>
+        <%= form.text_field :name %>
+      </label>
+      <label class="ls-label col-md-6">
+        <%= form.label :description, class: "ls-label-text" %>
+        <%= form.text_field :description %>
+      </label>
+      <label class="ls-label col-md-6">
+        <%= form.label :icon, class: "ls-label-text" %>
+        <%= form.file_field :icon %>
+      </label>
+      <label class="ls-label col-md-6">
+        <%= form.label :key, class: "ls-label-text" %>
+        <%= form.text_field :key %>
+      </label>
+    </fieldset>
+    <div class="ls-actions-btn">
+      <%= link_to 'Voltar', product_groups_path, class: "ls-btn-primary-info" %>
+      <%= form.submit 'Salvar', class: "ls-btn-primary" %>
+    </div>
+  <% end %>
+</div>

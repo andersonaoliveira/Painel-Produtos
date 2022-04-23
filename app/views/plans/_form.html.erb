@@ -1,0 +1,36 @@
+<%= render 'layouts/errors', object: plan %>
+<div class="container-fluid">
+  <div class="my-20">
+    <% if plan.persisted? %>
+      <h1>Editar Plano</h1>
+    <% else %>
+      <h1>Novo Plano</h1>
+    <% end %>
+  </div>
+  <%= form_with(model: plan, class: "ls-form row") do |form| %>
+    <fieldset>
+      <label class="ls-label col-md-6">
+        <%= form.label :name , 'Nome', class:"ls-label-text" %>
+        <%= form.text_field :name %>
+      </label>
+      <label class="ls-label col-md-6">
+        <%= form.label :description , 'Descrição', class:"ls-label-text" %>
+        <%= form.text_field :description %>
+      </label>
+      <label class="ls-label col-md-6">
+        <%= form.label :details , 'Detalhes', class:"ls-label-text" %>
+        <%= form.text_field :details %>
+      </label>
+      <label class="ls-label col-md-6">
+        <%= form.label :product_group_id,'Grupo de produtos', class:"ls-label-text" %>
+        <div class="ls-custom-select">
+          <%= form.collection_select :product_group_id, ProductGroup.all, :id, :name,{prompt: "Selecione o Grupo de Produtos"}, {class: "ls-select"} %>
+        </div>
+      </label>
+    </fieldset>
+    <div class="ls-actions-btn">
+      <%= link_to 'Voltar', plans_path, class: "ls-btn-primary-info" %>
+      <%= form.submit 'Salvar' , class: "ls-btn-primary"%>
+    </div>
+  <% end %>
+</div>

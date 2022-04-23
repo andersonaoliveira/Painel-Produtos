@@ -1,0 +1,28 @@
+<%= render 'layouts/errors', object: @period %>
+<div class="container-fluid">
+  <h1 class="text-center">Períodos cadastrados</h1>
+  <% if @periods.empty? %>
+    Nenhum período cadastrado
+  <% else %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Meses</th>
+          <th>Detalhes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @periods.each do |pr|%>
+          <tr id="period-<%= pr.id %>">
+            <th><%= pr.id %></th>
+            <td><%= pr.name %></td>
+            <td><%= pr.months %></td>
+            <td><%= link_to('Detalhes', pr) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

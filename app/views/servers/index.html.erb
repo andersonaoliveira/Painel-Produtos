@@ -1,0 +1,29 @@
+<div class="container-fluid">
+<%= render 'layouts/errors', object: @server %>
+  <h1 class="text-center my-20">Servidores</h1>
+
+  <% if @servers.empty? %>
+    <h2 class="my-20">Nenhuma instalação cadastrada!</h2>
+  <% else %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Codigo do Servidor</th>
+          <th>Planos Instalados</th>
+          <th>Detalhes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @servers.each do |server| %>
+          <tr id="server-<%= server.id %>">
+            <th><%= server.id %></th>
+            <td><%= server.code %></td>
+            <td><%= server.total_installations%>
+            <td><%= link_to('Detalhes', server) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+  </div>

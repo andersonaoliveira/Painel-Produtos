@@ -1,0 +1,52 @@
+.text-center {
+  text-align: center!important;
+  justify-content: center;
+  align-items: center;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6 !important;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.flex-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-box {
+  background-color: black;
+  color: white;
+  text-align: center;
+  width: 200px;
+}
+
+.adjust {
+  padding-top: 15px;
+}
+
+.mt-20 {
+  margin-top: 20px !important;
+}
+
+.mb-20 {
+  margin-bottom: 20px !important;
+}
+
+.my-20 {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+.pb-20 {
+  padding-bottom: 20px !important;
+}
+
+.mr-20 {
+  margin-right: 20px !important;
+}

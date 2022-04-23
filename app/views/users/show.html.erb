@@ -1,0 +1,54 @@
+<%= render 'layouts/errors', object: @user %>
+<div class="container-fluid pb-20">
+  <h1 class="text-center">Usuário: <%= @user.email %></h1>
+  <div class="row flex-box">
+    <div class="col-md-4 card" style="margin-left: 25px;margin-right: 25px;">
+      <table class="ls-table">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col" colspan="2">
+              <img src="https://cdn-icons-png.flaticon.com/512/74/74472.png" class="icon-show-pg"/>
+              <h2>Detalhes</h2>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">E-mail:</th>
+            <td>
+              <%= @user.email %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Criado em:</th>
+            <td>
+              <%= I18n.l @user.created_at, format: :short %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Última alteração:</th>
+            <td>
+              <%= I18n.l @user.updated_at, format: :short %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Administrador:</th>
+            <% if @user.administrator? %>
+              <td>Usuário possui os privilégios de administrador.</td>
+            <% else %>
+              <td>Usuário não possui os privilégios de administrador.</td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center my-20">
+        <div class="inline mb-20">
+          <%= link_to 'Voltar', users_path, class: "ls-btn-primary-info botao-card-pg" %>
+        </div>
+        <div class="inline">
+          <%= link_to 'Editar Usuário', edit_user_path, class: "ls-btn-primary botao-card-pg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

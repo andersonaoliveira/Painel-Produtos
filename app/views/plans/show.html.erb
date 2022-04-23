@@ -1,0 +1,128 @@
+<%= render 'layouts/errors', object: @plan %>
+<% if @new_price.present? %>
+  <%= render 'layouts/errors', object: @new_price %>
+<% end %>
+<div class="container-fluid pb-20">
+  <h1 class="ls-md-margin-top my-20">
+    Plano: <%= @plan.name %>
+  </h1>
+  <div class="row">
+    <div class="col-md-12">
+      <table class="ls-table">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col" colspan="2">
+              <h2>Detalhes</h2>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" >Nome</th>
+            <td>
+              <%= @plan.name %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Descrição</th>
+            <td>
+              <%= @plan.description %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Detalhes</th>
+            <td>
+              <%= @plan.details %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Grupo de Produto</th>
+            <td>
+              <%= @plan.product_group.name %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= link_to 'Voltar', plans_path, class: "ls-btn-primary-info" %>
+  <%= link_to 'Editar', edit_plan_path, class: "ls-btn-primary" %>
+  <% if @plan.status == "available" %>
+    <%= link_to 'Desativar Plano', plan_path(@plan), method: "delete", class: "ls-btn-primary-danger "%>
+    <%= link_to 'Ativar Plano', active_plan_path(@plan), class: "ls-btn-primary disabled"%>
+  <% else %>
+    <%= link_to 'Desativar Plano', plan_path(@plan), method: "delete", class: "ls-btn-primary-danger disabled"%>
+    <%= link_to 'Ativar Plano', active_plan_path(@plan), class: "ls-btn-primary"%>
+  <% end %>
+  <br>
+  <hr><br>
+  <h2 class="mt-20">Cadastrar Preço para <%= @plan.name %></h2>
+  <%= form_with(url:new_price_plan_path(@plan.id), html: {class: 'ls-form'}) do |form| %>
+    <%= form.hidden_field :plan_id, value: @plan.id %>
+    <div class="inline mr-20 my-20">
+      <%= form.label :value, 'Valor', class:"ls-label-text ls-label" %>
+      <%= form.text_field :value, step: :any, class: "dinheiro", placeholder: "R$" %>
+    </div>
+    <div class="inline">
+      <%= form.label :period_id, 'Período', class:"ls-label-text ls-label" %>
+      <%= form.collection_select(:period_id, @periods, :id, :name, {prompt: "Selecione o Periodo"},{class: "select", required: true})%>
+    </div>
+    <div>
+      <%= form.submit 'Salvar', class: "ls-btn-primary mt-20" %>
+    </div>
+  <% end %>
+  <br>
+  <hr><br>
+  <h2 class="mt-20">Preço Atual</h2>
+  <table class="ls-table">
+    <thead>
+      <tr>
+        <th>Preço</th>
+        <th>Período</th>
+        <th>Data</th>
+        <th>Criador por</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if @current_prices %>
+        <% @current_prices.each do |price| %>
+          <% if price %>
+            <tr id="current-price">
+              <td><%= number_to_currency(price.value) %></td>
+              <td><%= price.period.name %></td>
+              <td><%= I18n.l price.created_at, format: :short %></td>
+              <td><%= price.registered_by %></td>
+            </tr>
+          <% end %>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <hr><br>
+  <h1 class="pb-20">Histórico de Preço</h1>
+  <% @periods.each do |period| %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th>Preço</th>
+          <th>Data</th>
+          <th>Criador por</th>
+        </tr>
+      </thead>
+      <tbody>
+        <h2 class="mt-20"><%= period.name %></h2>
+        <% old_prices = @plan.old_prices(period) %>
+        <% old_prices.each do |old| %>
+          <tr id="old-price<%= old.id %>">
+            <td><%= number_to_currency(old.value) %></td>
+            <td><%= I18n.l old.created_at, format: :short %></td>
+            <td><%= old.registered_by %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+    <hr><br>
+  <% end %>
+</div>

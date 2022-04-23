@@ -1,0 +1,49 @@
+<aside class="ls-sidebar">
+  <div class="ls-sidebar-inner">
+    <a href="/"  class="ls-go-prev"><span class="ls-text">Início</span></a>
+    <nav class="ls-menu">
+      <ul>
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to 'Periodicidades', periods_path,
+                class: "ls-ico-month", title: "Periodicidades" %>
+          </li>
+          <li>
+            <%= link_to 'Cadastrar Periodicidade', new_period_path,
+                class: "ls-ico-month", title: "Cadastrar Periodicidade" %>
+          </li>
+          <li>
+            <%= link_to 'Grupos de Produtos', product_groups_path,
+                class: "ls-ico-origins", title: "Grupos de Produtos" %>
+          </li>
+          <li>
+            <%= link_to 'Cadastrar Grupo de Produtos', new_product_group_path,
+                class: "ls-ico-origins", title: "Cadastrar Grupo de Produtos" %>
+          </li>
+          <li>
+            <%= link_to 'Planos', plans_path,
+                class: "ls-ico-text", title: "Planos" %>
+          </li>
+          <li>
+            <%= link_to 'Cadastrar Plano', new_plan_path,
+                class: "ls-ico-text", title: "Cadastrar Plano" %>
+          </li>
+          <li>
+            <%= link_to 'Servidores', servers_path,
+                class: "ls-ico-cloud", title: "Servidores" %>
+          </li>
+           <li>
+            <%= link_to 'Cadastrar Servidor', new_server_path,
+                class: "ls-ico-cloud", title: "Cadastrar Servidor" %>
+          </li>
+           <li>
+            <%= link_to 'Instalações', installations_path,
+                class: "ls-ico-download2", title: "Instalações" %>
+          </li>
+          <% end %>
+        </ul>
+      </li>
+    </ul>
+    </nav>
+  </div>
+</aside>

@@ -1,0 +1,12 @@
+<div class="container erros">
+  <div class="row">
+    <% if object.present? %>
+      <% object.errors.full_messages.each do |message| %>
+        <div id="message" class="ls-alert-info ls-dismissable">
+          <%= message %>
+          <span data-ls-module="dismiss" class="ls-dismiss">&times;</span>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>

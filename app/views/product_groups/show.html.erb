@@ -1,0 +1,40 @@
+<%= render 'layouts/errors', object: @product_group %>
+<div class="container-fluid pb-20">
+  <h1 class="text-center">Grupo de Produtos: <%= @product_group.name %></h1>
+  <div class="row flex-box">
+    <div class="col-md-4 card" style="margin-left: 25px;margin-right: 25px;">
+      <table class="ls-table">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col" colspan="2">
+              <%= image_tag @product_group.icon, :class => "icon-show-pg" %>
+              <h2>Detalhes</h2>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Descrição:</th>
+            <td>
+              <%= @product_group.description %>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Chave:</th>
+            <td>
+              <%= @product_group.key %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center my-20">
+        <div class="inline mb-20">
+          <%= link_to 'Voltar', product_groups_path, class: "ls-btn-primary-info botao-card-pg" %>
+        </div>
+        <div class="inline">
+          <%= link_to 'Editar', edit_product_group_path, class: "ls-btn-primary botao-card-pg" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

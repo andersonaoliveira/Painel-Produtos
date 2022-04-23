@@ -1,0 +1,24 @@
+<%= render 'layouts/errors', object: server %>
+<div class="container-fluid">
+  <div class="my-20">
+    <h1>Novo Servidor</h1>  
+  </div>
+  <%= form_with(model: server, class: "ls-form row") do |form| %>
+    <fieldset>
+      <label class="ls-label col-md-6">
+        <%= form.label :capacity, 'Capacidade', class:"ls-label-text" %>
+        <%= form.text_field :capacity %>
+      </label>
+       <label class="ls-label col-md-6">
+        <%= form.label :plan_id,'Planos', class:"ls-label-text" %>
+        <div class="ls-custom-select">
+          <%= form.collection_select :plan_id, @plans, :id, :name,{prompt: "Selecione o Plano"}, {class: "ls-select"} %>
+        </div>
+      </label>
+    </fieldset>
+    <div class="ls-actions-btn">
+      <%= link_to 'Voltar', servers_path, class: "ls-btn-primary-info" %>
+      <%= form.submit 'Salvar' , class: "ls-btn-primary"%>
+    </div>
+  <% end %>
+</div>

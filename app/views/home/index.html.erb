@@ -1,0 +1,61 @@
+<%= render 'layouts/errors', object: @plan %>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">Gestão de Produtos</h1>
+      <h4 class="text-center">Resumo</h4>
+      <hr><br>
+    </div>
+  </div>
+  <% if user_signed_in? %>
+    <div class="row text-center">
+      <h2>Planos</h2>
+      <table class="ls-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Descrição</th>
+            <th>Detalhes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @plans.each do |s| %>
+            <tr id="plan-<%= s.id %>">
+              <th><%= s.id %></th>
+              <td><%= s.name %></td>
+              <td><%= s.description %></td>
+              <td><%= link_to('Detalhes', s) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <br>
+    <br>
+    <div class="row text-center">
+      <h2>Grupos de Produtos</h2>
+      <table class="ls-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Chave</th>
+            <th>Detalhes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @product_groups.each do |pg| %>
+            <tr id="group-<%= pg.id %>">
+              <th><%= pg.id %></th>
+              <td><%= pg.name %></td>
+              <td><%= pg.key %></td>
+              <td><%= link_to('Detalhes', pg) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% end %>
+</div>

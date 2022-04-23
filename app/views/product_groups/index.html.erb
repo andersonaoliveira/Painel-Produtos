@@ -1,0 +1,28 @@
+<%= render 'layouts/errors', object: @product_group %>
+<div class="container-fluid">
+  <h1 class="text-center">Grupos de Produtos</h1>
+  <% if @product_groups.empty? %>
+    <h2>Nenhum grupo de produtos cadastrado</h2>
+  <% else %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Chave</th>
+          <th>Detalhes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @product_groups.each do |pg| %>
+          <tr id="group-<%= pg.id %>">
+            <th><%= pg.id %></th>
+            <td><%= pg.name %></td>
+            <td><%= pg.key %></td>
+            <td><%= link_to('Detalhes', pg) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</div>

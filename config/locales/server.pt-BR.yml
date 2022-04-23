@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      server: Servidor
+    attributes:
+      server:
+        code: 'Código'
+        capacity: 'Capacidade'
+        plan: 'Plano'

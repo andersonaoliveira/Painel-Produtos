@@ -1,0 +1,33 @@
+<%= render 'layouts/errors', object: @period %>
+<div class="container-fluid pb-20">
+  <h1>Periodicidade: <%=@period.name%></h1>
+  <div class="row flex-box">
+    <div class="col-md-12 ">
+      <table class="ls-table">
+        <thead>
+          <tr>
+            <th class="text-center" scope="col" colspan="2">
+              <h2>Detalhes</h2>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" >Nome do Período:</th>
+            <td>
+              <%=@period.name%>
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Quantidade de Meses:</th>
+            <td>
+              <%=@period.months%>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <%= link_to 'Voltar', periods_path, class: "ls-btn-primary-info" %>
+  <%= link_to 'Editar', edit_period_path, class: "ls-btn-primary" %>
+</div>

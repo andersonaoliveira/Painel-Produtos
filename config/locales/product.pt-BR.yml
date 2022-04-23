@@ -1,0 +1,9 @@
+pt-BR:
+  activerecord:
+    models:
+      product: Produto
+    attributes:
+      product:
+        customer: Cliente
+        plan: Plano
+        server_code: Código do Servidor

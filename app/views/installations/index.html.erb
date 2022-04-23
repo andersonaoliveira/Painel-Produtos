@@ -1,0 +1,32 @@
+<%# <%= render 'layouts/errors', object: products %>
+<div class="container-fluid">
+  <h1 class="text-center my-20">Instalações</h1>
+
+  <% if @installations.empty? %>
+    <h2 class="my-20">Nenhum Instalação cadastrada!</h2>
+  <% else %>
+    <table class="ls-table">
+      <thead>
+        <tr>
+          <th>Código do Servidor</th>
+          <th>Código do Produto</th>
+          <th>Identificador cliente</th>
+          <th>Status</th>
+          <th>Capacidade Total</th>
+          <th>Ocupação</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @installations.each do |install| %>
+          <tr id="install-<%= install.id %>">
+            <td><%= install.server.code %></td>
+            <td><%= install.product_code %></td>
+            <td><%= install.customer %></td>
+            <td><%= install.status %></td>            
+            <td><%= install.server.capacity %></td>            
+            <td><%= install.server.total_installations %></td>            
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
